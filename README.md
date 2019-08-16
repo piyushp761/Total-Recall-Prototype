@@ -2,6 +2,9 @@
 
 A project made in flutter for the Total Recall App. This is just a prototype.
 
+![Current Look of the app](https://raw.githubusercontent.com/piyushp761/Total-Recall-Prototype/master/Current.png)
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
