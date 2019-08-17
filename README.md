@@ -1,9 +1,6 @@
 # total_recall
 
-A project made in flutter for the Total Recall App. This is just a prototype.
-
-![Current Look of the app](https://raw.githubusercontent.com/piyushp761/Total-Recall-Prototype/master/Current.png)
-
+A new Flutter project.
 
 ## Getting Started
 

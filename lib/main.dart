@@ -10,7 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Total Recall Prototype',
-      theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
+      theme: new ThemeData(
+          primaryColor: Color.fromRGBO(58, 66, 86, 1.0), fontFamily: 'Inter'),
       home: new ListPage(title: 'Total Recall'),
     );
   }
@@ -49,6 +50,7 @@ class _ListPageState extends State<ListPage> {
   final topAppBar = AppBar(
     elevation: 0.1,
     backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+    title: Text("User Status"),
     actions: <Widget>[
       IconButton(
         icon: Icon(Icons.refresh),
@@ -64,6 +66,74 @@ class _ListPageState extends State<ListPage> {
   final makeBody = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
+      Card(
+        elevation: 8.0,
+        margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        color: Color.fromRGBO(64, 75, 96, .9),
+        child: InkWell(
+            splashColor: Color.fromRGBO(58, 66, 86, 1.0),
+            onTap: () {},
+            child: Container(
+                decoration:
+                    BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+                padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("10,0000",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0)),
+                            Text("Total Users",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    //fontWeight: FontWeight.bold,
+                                    fontSize: 14.0)),
+                          ],
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("2,310",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0)),
+                            Text("Application Review",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    //fontWeight: FontWeight.bold,
+                                    fontSize: 14.0)),
+                          ],
+                        )),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("1,200",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20.0)),
+                            Text("Payment Complete",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    //fontWeight: FontWeight.bold,
+                                    fontSize: 14.0)),
+                          ],
+                        ))
+                  ],
+                ))),
+      ),
       Padding(
         padding: EdgeInsets.fromLTRB(10.0, 0, 5, 0),
         child: Text("FILTER",
@@ -303,4 +373,3 @@ List getUserFunnels() {
             "User marked as temporary rejected. No action required."),
   ];
 }
-
