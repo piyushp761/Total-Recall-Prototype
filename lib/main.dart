@@ -63,13 +63,17 @@ class _ListPageState extends State<ListPage> {
     ],
   );
 
-  final makeBody = Column(
+  static final makeBody = Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Card(
         elevation: 8.0,
         margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        clipBehavior: Clip.antiAlias,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        //shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0), ),
         color: Color.fromRGBO(64, 75, 96, .9),
         child: InkWell(
             splashColor: Color.fromRGBO(58, 66, 86, 1.0),
@@ -135,72 +139,29 @@ class _ListPageState extends State<ListPage> {
                 ))),
       ),
       Padding(
-        padding: EdgeInsets.fromLTRB(10.0, 0, 5, 0),
+        padding: EdgeInsets.fromLTRB(10.0, 10.0, 5, 0),
         child: Text("FILTER",
             style:
                 TextStyle(color: Colors.white30, fontWeight: FontWeight.bold)),
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 0, 5, 0),
-                child: Chip(
-                  label:
-                      Text('Lifetime', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                child: Chip(
-                  label: Text('Student', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                child: Chip(
-                  label:
-                      Text('Salaried', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                child: Chip(
-                  label: Text('Open', style: TextStyle(color: Colors.white)),
-                  backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-      Row(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(10.0, 0, 5, 0),
-            child: Chip(
-              label: Text('Corporate', style: TextStyle(color: Colors.white)),
-              backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-            child: Chip(
-              label: Text('My Referral Code Users',
-                  style: TextStyle(color: Colors.white)),
-              backgroundColor: Color.fromRGBO(64, 75, 96, .9),
-            ),
-          ),
-        ],
+      Container(
+        child: Wrap(
+          spacing: 3.0, // gap between adjacent chips
+          runSpacing: 3.0, // gap between lines
+          children: <Widget>[
+            chipDesign("Lifetime", 10.0),
+            chipDesign("Student", 0.0),
+            chipDesign("Salaried", 0.0),
+            chipDesign("Corporate", 0.0),
+            chipDesign("Open", 0.0),
+            chipDesign("My Referral Code Users", 0.0),
+            chipDesign("+10", 0.0),
+          ],
+        ),
       ),
       Expanded(
         child: ListView.builder(
+          padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: 10,
@@ -212,6 +173,18 @@ class _ListPageState extends State<ListPage> {
     ],
   );
 }
+
+Widget chipDesign(String label, double padding) => Container(
+      child: Chip(
+        label: Text(
+          label,
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Color.fromRGBO(64, 75, 96, .9),
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+      ),
+      margin: EdgeInsets.only(left: 10, right: 3, top: 0, bottom: 0),
+    );
 
 Card makeCard(UserFunnels userFunnels) => Card(
       elevation: 8.0,
