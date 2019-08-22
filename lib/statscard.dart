@@ -18,11 +18,11 @@ class StatsCard extends StatelessWidget{
             onTap: () {},
             child: Container(
                 decoration: BoxDecoration(color: ColorDarkFG),
-                padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                padding: EdgeInsets.fromLTRB(20, 24, 20, 24),
                 child: Column(
                   children: <Widget>[
                     Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        padding: EdgeInsets.fromLTRB(10.0, 9, 10.0, 9),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -33,7 +33,7 @@ class StatsCard extends StatelessWidget{
                           ],
                         )),
                     Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        padding: EdgeInsets.fromLTRB(10.0, 9, 10.0, 9),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
@@ -50,7 +50,7 @@ class StatsCard extends StatelessWidget{
                           ],
                         )),
                     Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 3, 10.0, 3),
+                        padding: EdgeInsets.fromLTRB(10.0, 9, 10.0, 9),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[

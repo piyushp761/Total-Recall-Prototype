@@ -16,7 +16,7 @@ class ChipDesign extends StatelessWidget{
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: ColorDarkFG,
-        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
       ),
       margin: EdgeInsets.only(left: 10, right: 3, top: 0, bottom: 0),
     );

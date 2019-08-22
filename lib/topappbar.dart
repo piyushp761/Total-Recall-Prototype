@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:total_recall/style.dart';
 
 class Appbar extends StatelessWidget with PreferredSizeWidget {
   final String _titleText;
@@ -9,23 +10,35 @@ class Appbar extends StatelessWidget with PreferredSizeWidget {
     return SliverAppBar(
       floating: false,
       pinned: true,
-      expandedHeight: 150.0,
-      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      flexibleSpace: const FlexibleSpaceBar(
-        title: Text("User Status", textAlign: TextAlign.justify,),
-        titlePadding: EdgeInsets.all(15.0),
-        
+      expandedHeight: 120.0,
+      elevation: 0.0,
+      backgroundColor: ColorDarkBG,
+      flexibleSpace: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          Container(
+            width: 250.0,
+            child: FlexibleSpaceBar(
+              title: Text(
+                "User Status",
+                textAlign: TextAlign.justify,
+              ),
+              titlePadding: EdgeInsets.all(15.0),
+            ),
+          ),
+          Spacer(),
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: () {},
+            color: Colors.white,
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+            color: Colors.white,
+          )
+        ],
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.refresh),
-          onPressed: () {},
-        ),
-        IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {},
-        )
-      ],
     );
   }
 
