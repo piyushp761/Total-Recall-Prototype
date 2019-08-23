@@ -6,8 +6,16 @@ import 'package:total_recall/statscard.dart';
 import 'userfunnels.dart';
 import 'style.dart';
 import 'topappbar.dart';
+import 'filterglance.dart';
+
+
 
 class TotalRecall extends StatelessWidget {
+
+  TotalRecall(){
+    reset();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -61,7 +69,7 @@ class _ListPageState extends State<ListPage> {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       StatsCard(),
-      FilterGlance(),
+      ChipsTile(label: 'FILTERS', children: chips),
       Expanded(
         child: ListView.builder(
           padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
@@ -76,6 +84,8 @@ class _ListPageState extends State<ListPage> {
     ],
   );
 }
+
+
 
 Card makeCard(UserFunnels userFunnels) => Card(
       elevation: 8.0,

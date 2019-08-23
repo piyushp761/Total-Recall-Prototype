@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
 import 'style.dart';
 
-class ChipDesign extends StatelessWidget{
+const Map<String, Set<String>> _materialActions = <String, Set<String>>{
+  'poker': <String>{'cash in'},
+  'tortilla': <String>{'fry', 'eat'},
+  'fish and': <String>{'fry', 'eat'},
+  'micro': <String>{'solder', 'fragment'},
+  'wood': <String>{'flake', 'cut', 'splinter', 'nick'},
+};
+
+class ChipDesign extends StatelessWidget {
   final String _label;
-  final double _padding;
 
-  ChipDesign(this._label, this._padding);
+  ChipDesign(this._label);
 
-  @override 
-  Widget build(BuildContext context){
-    return Container(
-      child: Chip(
-        label: Text(
-          _label,
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: ColorDarkFG,
-        padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-      ),
-      margin: EdgeInsets.only(left: 10, right: 3, top: 0, bottom: 0),
-    );
+  final Set<String> _materials = <String>{};
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> chips = _materials.map<Widget>((String name) {
+      return ActionChip(
+            key: ValueKey<String>(name),
+            backgroundColor: ColorDarkBG,
+            label: Text(name),
+            onPressed: () {
+              print("If you stand for nothing, Burr, what’ll you fall for?");
+            },
+          );
+    }).toList();
+    /*
+        ActionChip(
+            label: Text(
+              _label,
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: ColorDarkFG,
+            onPressed: () {
+              print("If you stand for nothing, Burr, what’ll you fall for?");
+            }
+            )
+            */
   }
 }
