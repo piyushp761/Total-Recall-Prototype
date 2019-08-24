@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'chipdesign.dart';
 import 'style.dart';
+import 'Filters/filters.dart';
 
 const List<String> _defaultMaterials = <String>[
   'Lifetime',
@@ -19,16 +19,19 @@ void reset() {
   _materials.addAll(_defaultMaterials);
 }
 
-final List<Widget> chips = _materials.map<Widget>((String name) {
-  return Chip(
-    padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-    key: ValueKey<String>(name),
-    backgroundColor: ColorDarkFG,
-    label: Text(
-      name,
-      style: TextStyle(color: Colors.white),
-    ),
-  );
+List<Widget> chips(BuildContext context) => _materials.map<Widget>((String name) {
+  return ActionChip(
+      padding: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
+      key: ValueKey<String>(name),
+      backgroundColor: ColorDarkFG,
+      label: Text(
+        name,
+        style: TextStyle(color: Colors.white),
+      ),
+      onPressed: () {
+                Navigator.push(context,
+           new MaterialPageRoute(builder: (context) => new Filters()));
+      });
 }).toList();
 
 class ChipsTile extends StatelessWidget {
@@ -94,50 +97,3 @@ class ChipsTile extends StatelessWidget {
     );
   }
 }
-
-/*
-
-class FilterGlance extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-                Padding(
-                padding: EdgeInsets.fromLTRB(10.0, 10.0, 5, 0),
-                child: Text("FILTER",
-                    style: TextStyle(
-                        color: Colors.white30, fontWeight: FontWeight.bold)),
-                ),
-
-                Container(
-                constraints: BoxConstraints(minHeight: 100, maxHeight: 100),
-                child: SingleChildScrollView(
-                    child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    verticalDirection: VerticalDirection.down,
-                    runSpacing: 3.0,
-                    spacing: 3.0,
-                    children: <Widget>[
-                        ChipDesign("Lifetime"),
-                        ChipDesign("Student"),
-                        ChipDesign("Salaried"),
-                        ChipDesign("Corporate"),
-                        ChipDesign("My Referral Code Users"),
-                        ChipDesign("+10"),
-                    ],
-                    ),
-                ),
-                ),
-            ],
-            )
-      ],
-    );
-  }
-}
-*/

@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:total_recall/Filters/filters.dart';
-import 'data.dart';
+import 'package:total_recall/Profile/profileoptions.dart';
 import 'package:total_recall/bottomnavbar.dart';
 import 'package:total_recall/filterglance.dart';
 import 'package:total_recall/statscard.dart';
-import 'userfunnels.dart';
-import 'style.dart';
-import 'topappbar.dart';
-import 'filterglance.dart';
+import 'package:total_recall/style.dart';
+import '../topappbar.dart';
+import 'data.dart';
 
 
 
-class TotalRecall extends StatelessWidget {
 
-  TotalRecall(){
-    reset();
-  }
+class Profile extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Total Recall Prototype',
+      title: 'My Profile',
       theme: new ThemeData(primaryColor: ColorDarkBG, fontFamily: 'Inter'),
-      home: new ListPage(title: 'Total Recall'),
+      home: new ListPage(title: 'Profile'),
     );
   }
 }
@@ -38,11 +34,11 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
-  static List userFunnels; //userFunnels list variable
+  static List profileOptions; //userFunnels list variable
 
   @override //load user funnel date into the userFunnels variable and load Filters in to filters
   void initState() {
-    userFunnels = getUserFunnels();
+    profileOptions = getUserOperations();
     super.initState();
   }
 
@@ -55,9 +51,7 @@ class _ListPageState extends State<ListPage> {
       bottomNavigationBar: BottomNavBar(1, 55.0),
       body: CustomScrollView(
         slivers: <Widget>[
-          Appbar("User Status", true),
-          
-      
+          Appbar("Profile", false),
           SliverFillRemaining(
             child: makeBody(context),
           )
@@ -69,16 +63,15 @@ class _ListPageState extends State<ListPage> {
   static makeBody(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      StatsCard(),
-      ChipsTile(label: 'FILTERS', children: chips(context)),
+      //StatsCard(),
       Expanded(
         child: ListView.builder(
           padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          itemCount: 10,
+          itemCount: 7,
           itemBuilder: (BuildContext context, int index) {
-            return makeCard(userFunnels[index], context);
+            return makeCard(profileOptions[index], context);
           },
         ),
       )
@@ -88,43 +81,39 @@ class _ListPageState extends State<ListPage> {
 
 
 
-Card makeCard(UserFunnels userFunnels, BuildContext context) => Card(
+Card makeCard(ProfileOptions profileOptions, BuildContext context) => Card(
       elevation: 8.0,
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         decoration: BoxDecoration(color: ColorDarkFG),
-        child: makeListTile(userFunnels, context),
+        child: makeListTile(profileOptions, context),
       ),
     );
 
-ListTile makeListTile(UserFunnels userFunnels, BuildContext context) => ListTile(
+ListTile makeListTile(ProfileOptions profileOptions, BuildContext context) => ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       leading: Container(
           padding: EdgeInsets.only(right: 12.0),
           decoration: new BoxDecoration(
               border: new Border(
                   right: new BorderSide(width: 1.0, color: Colors.white24))),
-          child: Text(userFunnels.userNumbers.toString(),
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0))),
+          child: profileOptions.optionIcon,
+              ),
       title: Text(
-        userFunnels.funnelName,
+        profileOptions.optionName,
         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
       subtitle: Row(
         children: <Widget>[
           Expanded(
               flex: 4,
-              child: Text(userFunnels.funnelDescription,
+              child: Text(profileOptions.optionDescription,
                   style: TextStyle(color: Colors.white))),
         ],
       ),
       trailing:
           Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
       onTap: () {
-
                         Navigator.push(
                             context, MaterialPageRoute(builder: (context) => Filters()));
                             
