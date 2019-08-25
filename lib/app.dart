@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:total_recall/Filters/filters.dart';
+import 'Tabbed User Stats/tabbed.dart';
 import 'data.dart';
 import 'package:total_recall/bottomnavbar.dart';
 import 'package:total_recall/filterglance.dart';
@@ -126,7 +127,7 @@ ListTile makeListTile(UserFunnels userFunnels, BuildContext context) => ListTile
       onTap: () {
 
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => Filters()));
+                            context, MaterialPageRoute(builder: (context) => TabsList()));
                             
       },
     );
