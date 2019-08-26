@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:total_recall/Filters/filters.dart';
+import 'package:total_recall/Profile/profilecard.dart';
 import 'package:total_recall/Profile/profileoptions.dart';
 import 'package:total_recall/bottomnavbar.dart';
 import 'package:total_recall/filterglance.dart';
@@ -63,7 +64,7 @@ class _ListPageState extends State<ListPage> {
   static makeBody(BuildContext context) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-      //StatsCard(),
+      ProfileCard(),
       Expanded(
         child: ListView.builder(
           padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
