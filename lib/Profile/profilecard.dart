@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:total_recall/style.dart';
+import 'package:share/share.dart';
 
 class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String text = "Use my Referral Code A54FQ on the RedCarpet app to recieve instant credit. Download now from the playstore.";
     return Card(
       elevation: 8.0,
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
@@ -59,7 +61,32 @@ class ProfileCard extends StatelessWidget {
                           Text("A54FQ", style: AppBarTextStyle),
                           IconButton(
                             icon: Icon(Icons.share),
-                            onPressed: () {},
+                            onPressed: text.isEmpty
+                          ? null
+                          : () {
+                              // A builder is used to retrieve the context immediately
+                              // surrounding the RaisedButton.
+                              //
+                              // The context's `findRenderObject` returns the first
+                              // RenderObject in its descendent tree when it's not
+                              // a RenderObjectWidget. The RaisedButton's RenderObject
+                              // has its position and size after it's built.
+                              final RenderBox box = context.findRenderObject();
+                              Share.share(text,
+                                  subject: "Code",
+                                  sharePositionOrigin:
+                                      box.localToGlobal(Offset.zero) &
+                                          box.size);
+                            /*
+                            },
+                              print("LMAOOO");
+                               final RenderBox box = context.findRenderObject();
+                              Share.share(text,
+                                  subject: "Code",
+                                  sharePositionOrigin:
+                                      box.localToGlobal(Offset.zero) &
+                                          box.size); */
+                            },
                             color: Colors.white,
                           ),
                         ],

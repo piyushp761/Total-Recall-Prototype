@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:total_recall/share.dart';
 
 class DemoApp extends StatefulWidget {
   @override
@@ -59,11 +58,7 @@ class DemoAppState extends State<DemoApp> {
                               // a RenderObjectWidget. The RaisedButton's RenderObject
                               // has its position and size after it's built.
                               final RenderBox box = context.findRenderObject();
-                              Share.share(text,
-                                  subject: subject,
-                                  sharePositionOrigin:
-                                      box.localToGlobal(Offset.zero) &
-                                          box.size);
+                            
                             },
                     );
                   },
