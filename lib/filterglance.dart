@@ -30,7 +30,7 @@ List<Widget> chips(BuildContext context) => _materials.map<Widget>((String name)
       ),
       onPressed: () {
                 Navigator.push(context,
-           new MaterialPageRoute(builder: (context) => new Filters()));
+           new MaterialPageRoute(builder: (context) => new DemoApp()));
       });
 }).toList();
 

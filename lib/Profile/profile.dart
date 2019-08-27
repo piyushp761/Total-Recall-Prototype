@@ -116,7 +116,7 @@ ListTile makeListTile(ProfileOptions profileOptions, BuildContext context) => Li
           Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
       onTap: () {
                         Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => Filters()));
+                            context, MaterialPageRoute(builder: (context) => DemoApp()));
                             
       },
     );
